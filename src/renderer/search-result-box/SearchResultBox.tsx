@@ -14,6 +14,9 @@ function SearchResultBox({
     const newStatData: IStatData = {
       ...statData,
       calories: statData.calories + productData.nutriments['energy-kcal'],
+      proteins: statData.proteins + productData.nutriments.proteins,
+      sugars: statData.sugars + productData.nutriments.sugars,
+      'saturated-fat': statData['saturated-fat'] + productData.nutriments['saturated-fat'],
     };
     updateStatData(newStatData);
   }

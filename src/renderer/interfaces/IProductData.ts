@@ -1,5 +1,8 @@
 interface INutriments {
   'energy-kcal': number;
+  proteins: number;
+  'saturated-fat': number;
+  sugars: number;
 }
 
 interface IProductData {

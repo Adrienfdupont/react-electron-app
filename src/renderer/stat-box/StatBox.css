@@ -6,3 +6,9 @@
 .statContainer button {
     margin: 10px;
 }
+
+.statCell {
+  background-color: #077107;
+  padding: 5px;
+  margin: 5px;
+}
