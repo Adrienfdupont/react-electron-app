@@ -23,7 +23,7 @@ function HomePage() {
 
   return (
     <div>
-      <StatBox statData={statData} />
+      <StatBox statData={statData} updateStatData={updateStatData} />
       <SearchBox updateProduct={updateProduct} />
       <SearchResultBox searchResult={product} statData={statData} updateStatData={updateStatData} />
     </div>

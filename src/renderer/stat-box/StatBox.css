@@ -1,0 +1,8 @@
+.statContainer {
+    display: flex;
+    margin: 5px;
+}
+
+.statContainer button {
+    margin: 10px;
+}
