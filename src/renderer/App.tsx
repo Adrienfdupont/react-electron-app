@@ -14,11 +14,17 @@ function HomePage() {
     ingredients_text: '',
     nutriments: {
       'energy-kcal': 0,
+      proteins: 0,
+      'saturated-fat': 0,
+      sugars: 0,
     },
   });
 
   const [statData, updateStatData] = useState<IStatData>({
     calories: 0,
+    proteins: 0,
+    'saturated-fat': 0,
+    sugars: 0,
   });
 
   return (
