@@ -1,31 +1,34 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { useState } from 'react';
-import SearchBox from './search-box/SearchBox';
-import SearchResultBox from './search-result-box/SearchResultBox';
-import StatBox from './stat-box/StatBox';
+import SearchBox from './components/search-box/SearchBox';
+import SearchResultBox from './components/search-result-box/SearchResultBox';
+import StatBox from './components/stat-box/StatBox';
 import IProductData from './interfaces/IProductData';
 import IStatData from './interfaces/IStatData';
+import StatsService from './services/StatsService';
+import ProductService from './services/ProductService';
 
 function HomePage() {
-  const [product, updateProduct] = useState<IProductData>({
-    generic_name_fr: '',
-    generic_name_en: '',
-    ingredients_text: '',
-    nutriments: {
-      'energy-kcal': 0,
-    },
-  });
+  const statsService = StatsService.getInstance();
 
-  const [statData, updateStatData] = useState<IStatData>({
-    calories: 0,
-  });
+  const [product, updateProduct] = useState<IProductData>(
+    ProductService.dataTemplate,
+  );
+
+  const [statData, updateStatData] = useState<IStatData>(
+    statsService.retrieveStats(),
+  );
 
   return (
     <div>
-      <StatBox statData={statData} />
+      <StatBox statData={statData} updateStatData={updateStatData} />
       <SearchBox updateProduct={updateProduct} />
-      <SearchResultBox searchResult={product} statData={statData} updateStatData={updateStatData} />
+      <SearchResultBox
+        searchResult={product}
+        statData={statData}
+        updateStatData={updateStatData}
+      />
     </div>
   );
 }

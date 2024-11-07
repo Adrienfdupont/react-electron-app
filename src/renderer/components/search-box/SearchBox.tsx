@@ -1,5 +1,6 @@
-import IProductData from '../interfaces/IProductData';
-import ProductService from '../services/ProductService';
+import IProductData from '../../interfaces/IProductData';
+import ProductService from '../../services/ProductService';
+import './SearchBox.css';
 
 function SearchBox({
   updateProduct,
@@ -23,10 +24,10 @@ function SearchBox({
   }
 
   return (
-    <div>
-      <input type="text" />
-      <button type="button" onClick={searchProduct}>
-        Search
+    <div className="search_container">
+      <input className="search_input" type="text" />
+      <button className="search_button" type="button" onClick={searchProduct}>
+        Rechercher
       </button>
     </div>
   );
