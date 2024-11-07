@@ -1,6 +1,6 @@
 import IProductData from '../../interfaces/IProductData';
 import IStatData from '../../interfaces/IStatData';
-import StorageService from '../../services/StorageService';
+import StatsService from '../../services/StatsService';
 import './SearchResultBox.css';
 
 function SearchResultBox({
@@ -12,27 +12,28 @@ function SearchResultBox({
   statData: IStatData;
   updateStatData: (statData: IStatData) => void;
 }) {
-  const storageService = StorageService.getInstance();
+  const statsService = StatsService.getInstance();
 
   function handleStatUpdate(productData: IProductData) {
     const newStatData: IStatData = {
       ...statData,
-      calories: statData.calories + productData.nutriments['energy-kcal'],
+      calories: statData.calories + productData.nutriments.kcal,
       proteins: statData.proteins + productData.nutriments.proteins,
       sugars: statData.sugars + productData.nutriments.sugars,
-      'saturated-fat': statData['saturated-fat'] + productData.nutriments['saturated-fat'],
+      saturedFat: statData.saturedFat + productData.nutriments.saturedFat,
     };
     updateStatData(newStatData);
-    storageService.storeData('stats', newStatData);
+    statsService.saveStats(newStatData);
   }
 
   return (
     <div>
-      <p>
-        {searchResult.generic_name_fr?.length > 0
-          ? searchResult.generic_name_fr
-          : searchResult.generic_name_en}
-      </p>
+      <div className="search_result_container">
+        <p>
+          {searchResult.nameFr && searchResult.nameFr.length > 0
+            ? searchResult.nameFr
+            : searchResult.nameEn}
+        </p>
 
       {searchResult.ingredients_text?.length > 0 && (
         <p>Ingrédients: {searchResult.ingredients_text}</p>

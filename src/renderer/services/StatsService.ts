@@ -6,6 +6,13 @@ class StatsService {
 
   private storageService = StorageService.getInstance();
 
+  public static dataTemplate: IStatData = {
+    calories: 0,
+    proteins: 0,
+    saturedFat: 0,
+    sugars: 0,
+  };
+
   static getInstance(): StatsService {
     if (!StatsService.instance) {
       StatsService.instance = new StatsService();
@@ -20,18 +27,13 @@ class StatsService {
     return {
       calories: 0,
       proteins: 0,
-      'saturated-fat': 0,
+      saturedFat: 0,
       sugars: 0,
     };
   }
 
-  resetStats(): void {
-    this.storageService.storeData('stats', {
-      calories: 0,
-      proteins: 0,
-      'saturated-fat': 0,
-      sugars: 0,
-    });
+  saveStats(newStats: IStatData): void {
+    this.storageService.storeData('stats', newStats);
   }
 }
 
