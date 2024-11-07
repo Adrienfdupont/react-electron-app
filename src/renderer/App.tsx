@@ -21,7 +21,7 @@ function HomePage() {
   );
 
   return (
-    <div>
+    <div className="container">
       <StatBox statData={statData} updateStatData={updateStatData} />
       <SearchBox updateProduct={updateProduct} />
       <SearchResultBox

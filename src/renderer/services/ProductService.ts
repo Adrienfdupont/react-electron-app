@@ -16,6 +16,8 @@ class ProductService {
       sugars: 0,
     },
     code: '',
+    pictureUrl: '',
+    brandName: '',
   };
 
   static getInstance(): ProductService {
@@ -48,6 +50,7 @@ class ProductService {
           },
           code: data.code,
           pictureUrl: data.product.image_front_url,
+          brandName: data.product.brands,
         };
       })
       .catch(() => {
