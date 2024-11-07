@@ -10,6 +10,7 @@ interface IProductData {
   generic_name_en: string;
   ingredients_text: string;
   nutriments: INutriments;
+  code: string;
 }
 
 export default IProductData;
