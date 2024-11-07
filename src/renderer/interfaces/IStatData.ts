@@ -1,7 +1,7 @@
 interface IStatData {
   calories: number;
   proteins: number;
-  'saturated-fat': number;
+  saturedFat: number;
   sugars: number;
 }
 

@@ -6,13 +6,13 @@ class ProductService {
   private static apiBaseUrl = 'https://world.openfoodfacts.org/';
 
   public static dataTemplate: IProductData = {
-    generic_name_fr: '',
-    generic_name_en: '',
-    ingredients_text: '',
+    nameFr: '',
+    nameEn: '',
+    ingredientList: '',
     nutriments: {
-      'energy-kcal': 0,
+      kcal: 0,
       proteins: 0,
-      'saturated-fat': 0,
+      saturedFat: 0,
       sugars: 0,
     },
     code: '',
@@ -30,17 +30,28 @@ class ProductService {
 
     return fetch(url)
       .then((response) => {
-        if (response.ok) {
+        if (response.status === 200) {
           return response.json();
         }
-        throw new Error('API request failed');
+        throw new Error('An error occured');
       })
       .then((data) => {
-        return data.product;
+        return {
+          nameFr: data.product.product_name_fr,
+          nameEn: data.product.product_name,
+          ingredientList: data.product.ingredients_text_fr,
+          nutriments: {
+            kcal: data.product.nutriments['energy-kcal'],
+            proteins: data.product.nutriments.proteins,
+            saturedFat: data.product.nutriments['saturated-fat'],
+            sugars: data.product.nutriments.sugars,
+          },
+          code: data.code,
+          pictureUrl: data.product.image_front_url,
+        };
       })
-      .catch((error) => {
-        console.error(error);
-        throw error;
+      .catch(() => {
+        throw new Error('Product not found');
       });
   }
 }
