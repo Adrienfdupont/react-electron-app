@@ -35,17 +35,22 @@ function SearchResultBox({
             : searchResult.nameEn}
         </p>
 
-      {searchResult.ingredients_text?.length > 0 && (
-        <p>Ingrédients: {searchResult.ingredients_text}</p>
-      )}
+        {searchResult.ingredientList?.length > 0 && (
+          <p>Ingrédients: {searchResult.ingredientList}</p>
+        )}
 
-      {searchResult.code?.length > 0 && (
-        <div className="button_container">
-          <button className="add_button" type="button" onClick={() => handleStatUpdate(searchResult)}>
-            Ajouter
-          </button>
-        </div>
-      )}
+        {searchResult.code?.length > 0 && (
+          <div className="button_container">
+            <button
+              className="add_button"
+              type="button"
+              onClick={() => handleStatUpdate(searchResult)}
+            >
+              Ajouter
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
