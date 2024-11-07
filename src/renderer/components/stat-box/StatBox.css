@@ -1,6 +1,7 @@
 .statContainer {
     display: flex;
     margin: 5px;
+    font-size: 1.5rem;
 }
 
 .statContainer button {
@@ -15,7 +16,7 @@
 }
 
 .reset_button {
-    font-size: 20px;
+    font-size: 40px;
     margin: 10px;
 }
 
