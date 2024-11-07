@@ -30,10 +30,10 @@ class ProductService {
 
     return fetch(url)
       .then((response) => {
-        if (response.ok) {
+        if (response.status === 200) {
           return response.json();
         }
-        throw new Error('API request failed');
+        throw new Error('An error occured');
       })
       .then((data) => {
         return {
@@ -50,9 +50,8 @@ class ProductService {
           pictureUrl: data.product.image_front_url,
         };
       })
-      .catch((error) => {
-        console.error(error);
-        throw error;
+      .catch(() => {
+        throw new Error('Product not found');
       });
   }
 }
