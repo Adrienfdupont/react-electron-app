@@ -1,12 +1,11 @@
 .search_button {
   background-color: coral;
-  padding: 5px;
   border-width: 0;
   border-radius: 5px;
   color: #fff;
   margin: 5px;
   height: 30px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .search_button:hover {

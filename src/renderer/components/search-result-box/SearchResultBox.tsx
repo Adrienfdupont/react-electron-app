@@ -30,14 +30,23 @@ function SearchResultBox({
     <div>
       <div className="search_result_container">
         <p>
-          {searchResult.nameFr && searchResult.nameFr.length > 0
-            ? searchResult.nameFr
-            : searchResult.nameEn}
+          {searchResult.nameFr &&
+            searchResult.nameFr.length > 0 &&
+            `${searchResult.nameFr} (${searchResult.brandName})`}
         </p>
 
-      {searchResult.ingredients_text?.length > 0 && (
-        <p>Ingrédients: {searchResult.ingredients_text}</p>
-      )}
+        {searchResult.pictureUrl && (
+          <img
+            className="product_image"
+            src={searchResult.pictureUrl}
+            alt="product image"
+          />
+        )}
+
+        {searchResult.ingredientList?.length > 0 && (
+          <p>Ingrédients: {searchResult.ingredientList}</p>
+        )}
+      </div>
 
       {searchResult.code?.length > 0 && (
         <div className="button_container">

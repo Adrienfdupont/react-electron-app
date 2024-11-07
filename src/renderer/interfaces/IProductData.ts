@@ -12,6 +12,7 @@ interface IProductData {
   nutriments: INutriments;
   code: string;
   pictureUrl?: string;
+  brandName: string;
 }
 
 export default IProductData;
