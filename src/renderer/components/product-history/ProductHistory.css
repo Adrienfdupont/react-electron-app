@@ -1,0 +1,19 @@
+.history_picture {
+  height: 50px;
+}
+
+.history_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  gap: 20px;
+}
+
+
+.history_container {
+  display: flex;
+  max-height: 500px;
+  flex-direction: column-reverse;
+}
