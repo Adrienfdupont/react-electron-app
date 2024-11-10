@@ -13,7 +13,13 @@ class StorageService {
   }
 
   retrieveData(key: string) {
-    return JSON.parse(localStorage.getItem(key) || '{}');
+    const data = localStorage.getItem(key);
+
+    if (data) {
+      return JSON.parse(data);
+    }
+
+    return null;
   }
 }
 

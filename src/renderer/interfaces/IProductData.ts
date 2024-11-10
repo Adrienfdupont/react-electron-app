@@ -1,16 +1,18 @@
 interface INutriments {
-  'energy-kcal': number;
+  kcal: number;
   proteins: number;
-  'saturated-fat': number;
+  saturedFat: number;
   sugars: number;
 }
 
 interface IProductData {
-  generic_name_fr: string;
-  generic_name_en: string;
-  ingredients_text: string;
+  nameFr?: string;
+  nameEn?: string;
+  ingredientList: string;
   nutriments: INutriments;
   code: string;
+  pictureUrl?: string;
+  brandName: string;
 }
 
 export default IProductData;

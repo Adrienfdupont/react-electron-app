@@ -34,3 +34,8 @@ a:hover {
   opacity: 1;
   text-decoration: none;
 }
+
+.container {
+  margin: 0 450px;
+  display: flex;
+}
