@@ -2,17 +2,23 @@ import IProductData from '../../interfaces/IProductData';
 import IStatData from '../../interfaces/IStatData';
 import StatsService from '../../services/StatsService';
 import './SearchResultBox.css';
+import ProductService from '../../services/ProductService';
 
 function SearchResultBox({
   searchResult,
   statData,
   updateStatData,
+  productHistory,
+  updateProductHistory,
 }: {
   searchResult: IProductData;
   statData: IStatData;
   updateStatData: (statData: IStatData) => void;
+  productHistory: IProductData[];
+  updateProductHistory: (productHistory: IProductData[]) => void;
 }) {
   const statsService = StatsService.getInstance();
+  const productService = ProductService.getInstance();
 
   function handleStatUpdate(productData: IProductData) {
     const newStatData: IStatData = {
@@ -24,6 +30,8 @@ function SearchResultBox({
     };
     updateStatData(newStatData);
     statsService.saveStats(newStatData);
+    updateProductHistory([...productHistory, productData]);
+    productService.saveProductHistory([...productHistory, productData]);
   }
 
   return (

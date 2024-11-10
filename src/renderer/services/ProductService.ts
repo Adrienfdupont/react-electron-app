@@ -1,4 +1,5 @@
 import IProductData from '../interfaces/IProductData';
+import StorageService from './StorageService';
 
 class ProductService {
   private static instance: ProductService;
@@ -56,6 +57,18 @@ class ProductService {
       .catch(() => {
         throw new Error('Product not found');
       });
+  }
+
+  saveProductHistory(history: IProductData[]) {
+    const storageService = StorageService.getInstance();
+
+    storageService.storeData('productHistory', history);
+  }
+
+  retrieveProductHistory(): IProductData[] {
+    const storageService = StorageService.getInstance();
+
+    return storageService.retrieveData('productHistory') || [];
   }
 }
 

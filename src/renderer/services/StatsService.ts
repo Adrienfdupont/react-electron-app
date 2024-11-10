@@ -21,15 +21,9 @@ class StatsService {
   }
 
   retrieveStats(): IStatData {
-    if (this.storageService.retrieveData('stats')) {
-      return this.storageService.retrieveData('stats');
-    }
-    return {
-      calories: 0,
-      proteins: 0,
-      saturedFat: 0,
-      sugars: 0,
-    };
+    return (
+      this.storageService.retrieveData('stats') || StatsService.dataTemplate
+    );
   }
 
   saveStats(newStats: IStatData): void {
